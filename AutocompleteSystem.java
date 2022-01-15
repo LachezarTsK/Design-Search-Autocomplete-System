@@ -11,7 +11,7 @@ public class AutocompleteSystem {
     final int MAX_LENGTH_ENTRY_SENTENCE = 200;//MIN = 1;
     final int ALPHABET_PLUS_SPACE_CHARACTER = 27;
     final int MAX_HOT_SENTENCES_TO_DISPLAY = 3;
-    TreeMap<Integer, List<String>> frequencyMap;//At any time, 0<= frequencyMap.size() <=3
+    TreeMap<Integer, List<String>> frequencyMap;//At any time: 0 <= frequencyMap.size() <= MAX_HOT_SENTENCES_TO_DISPLAY
     StringBuilder prefix;
     TrieNode root;
 
