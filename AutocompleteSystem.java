@@ -121,8 +121,8 @@ public class AutocompleteSystem {
         }
 
         if (frequency > frequencyMap.firstKey()) {
-            frequencyMap.put(frequency, new ArrayList<>(List.of(sentence)));
             frequencyMap.remove(frequencyMap.firstKey());
+            frequencyMap.put(frequency, new ArrayList<>(List.of(sentence)));
         }
     }
 
