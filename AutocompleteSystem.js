@@ -86,7 +86,7 @@ AutocompleteSystem.prototype.searchTrie = function (node, checkSentence, trieLev
 };
 
 /** 
- * @param {char[]} checkSentence
+ * @param {character[]} checkSentence
  * @return {boolean}
  */
 AutocompleteSystem.prototype.equalsPrefix = function (checkSentence) {
