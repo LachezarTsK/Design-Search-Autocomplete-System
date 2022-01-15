@@ -153,8 +153,8 @@ AutocompleteSystem.prototype.addSentenceToFrequencyMap = function (sentence, fre
         min = Math.min(min, n);
     }
     if (frequency > min) {
-        this.frequencyMap.set(frequency, [sentence]);
         this.frequencyMap.delete(min);
+        this.frequencyMap.set(frequency, [sentence]);
     }
 };
 
