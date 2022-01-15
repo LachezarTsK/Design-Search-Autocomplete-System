@@ -9,7 +9,7 @@ var AutocompleteSystem = function (sentences, times) {
     this.MAX_LENGTH_ENTRY_SENTENCE = 200;//MIN = 1;
     this.ALPHABET_PLUS_SPACE_CHARACTER = 27;
     this.MAX_HOT_SENTENCES_TO_DISPLAY = 3;
-    this.frequencyMap = new Map();
+    this.frequencyMap = new Map();//At any time: 0 <= frequencyMap.size() <= MAX_HOT_SENTENCES_TO_DISPLAY
     this.prefix = [];
     this.root = new TrieNode();
     this.createDictionary(sentences, times);
