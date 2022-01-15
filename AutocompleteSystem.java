@@ -27,9 +27,9 @@ public class AutocompleteSystem {
             frequencyMap = new TreeMap<>();
             prefix.append(Character.toString(c));
 
-            char[] array = new char[MAX_LENGTH_ENTRY_SENTENCE];
+            char[] checkSentence = new char[MAX_LENGTH_ENTRY_SENTENCE];
             TrieNode current = root;
-            searchTrie(current, array, 0);
+            searchTrie(current, checkSentence, 0);
             return pickTop_3_hotSentences();
         }
 
@@ -57,28 +57,28 @@ public class AutocompleteSystem {
         return result;
     }
 
-    public void searchTrie(TrieNode node, char[] array, int trieLevel) {
+    public void searchTrie(TrieNode node, char[] checkSentence, int trieLevel) {
         if (node == null) {
             return;
         }
 
         if (node.isEndOfSentence && trieLevel >= prefix.length()) {
-            addSentenceToFrequencyMap(String.valueOf(Arrays.copyOfRange(array, 0, trieLevel)), node.frequency);
+            addSentenceToFrequencyMap(String.valueOf(Arrays.copyOfRange(checkSentence, 0, trieLevel)), node.frequency);
         }
 
         for (int i = 0; i < ALPHABET_PLUS_SPACE_CHARACTER; i++) {
             if (node.branches[i] != null) {
-                array[trieLevel] = getCharacterFromIndex(i);
-                if (trieLevel >= prefix.length() || array[trieLevel] == prefix.charAt(trieLevel)) {
-                    searchTrie(node.branches[i], array, trieLevel + 1);
+                checkSentence[trieLevel] = getCharacterFromIndex(i);
+                if (trieLevel >= prefix.length() || checkSentence[trieLevel] == prefix.charAt(trieLevel)) {
+                    searchTrie(node.branches[i], checkSentence, trieLevel + 1);
                 }
             }
         }
     }
 
-    public boolean equalsPrefix(char[] array) {
+    public boolean equalsPrefix(char[] checkSentence) {
         for (int i = 0; i < prefix.length(); i++) {
-            if (array[i] != prefix.charAt(i)) {
+            if (checkSentence[i] != prefix.charAt(i)) {
                 return false;
             }
         }
