@@ -139,9 +139,9 @@ public:
         }
 
         if (frequency > frequencyMap.begin()->first) {
+            frequencyMap.erase(frequencyMap.begin()->first);
             frequencyMap[frequency] = vector<string>();
             frequencyMap[frequency].push_back(sentence);
-            frequencyMap.erase(frequencyMap.begin()->first);
         }
     }
 
