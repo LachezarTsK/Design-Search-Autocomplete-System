@@ -19,7 +19,7 @@ public:
     const int ASCII_SMALL_CASE_A = 97;
     const int ALPHABET_PLUS_SPACE_CHARACTER = 27;
     const int MAX_HOT_SENTENCES_TO_DISPLAY = 3;
-    map<int, vector<string>> frequencyMap; //At any time, 0<= frequencyMap.size() <=3
+    map<int, vector<string>> frequencyMap; //At any time: 0 <= frequencyMap.size() <= MAX_HOT_SENTENCES_TO_DISPLAY
     vector<char> prefix;
     TrieNode* root = new TrieNode();
 
@@ -153,3 +153,29 @@ public:
         return index < (ALPHABET_PLUS_SPACE_CHARACTER - 1) ? (char) (index + ASCII_SMALL_CASE_A) : ' ';
     }
 };
+
+int main() {
+    vector<string> sentences = {"i love you", "island", "xroman", "i love leetcode"};
+    vector<int> times = {5, 3, 2, 2};
+    AutocompleteSystem* obj = new AutocompleteSystem(sentences, times);
+
+    cout << endl;
+    vector<string> param_1 = obj->input('x');
+    for (size_t i = 0; i < param_1.size(); i++) {
+        cout << param_1[i] << endl;
+    }
+    cout << endl;
+
+    //param_1 = obj->input('s');
+    //	for (size_t i = 0; i < param_1.size(); i++) {
+    //cout << param_1[i] << endl;
+    //}
+
+    vector<string>::reverse_iterator it;
+    for (it = sentences.rbegin(); it != sentences.rend(); it++) {
+        cout << (*it) << endl;
+    }
+
+    map<int, string> v1;
+    cout << (v1.contains(3)) << endl;
+}
